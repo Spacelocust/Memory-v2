@@ -1,0 +1,20 @@
+version: '3.4'
+
+networks:
+  memory-network:
+    driver: bridge
+
+services:
+  node-client-service:
+    image: node:17.7.1-alpine
+    container_name: node-client-container
+    entrypoint: ["/bin/sh", "-c", "yarn install && yarn start"]
+    expose:
+      - "3000"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./memory/:/app
+    working_dir: /app
+    networks:
+      - memory-network
