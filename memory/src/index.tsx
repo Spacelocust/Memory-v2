@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
+import Test from './components/Atoms/Test';
+
 import './bemit/index.css';
 
 const root = ReactDOM.createRoot(
@@ -9,6 +11,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
 	<React.StrictMode>
-		<div>test results</div>
+		<Test />
 	</React.StrictMode>,
 );

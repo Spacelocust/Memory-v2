@@ -29,10 +29,8 @@ export const memorySlice = createSlice({
 		select: (state, { payload }: PayloadAction<Choice>): void => {
 			if (isNull(state.choiceA)) {
 				state.choiceA = payload;
-			} else {
-				if (isNull(state.choiceB) && state.choiceA.name !== payload.name) {
-					state.choiceB = payload;
-				}
+			} else if (isNull(state.choiceB) && state.choiceA.name !== payload.name) {
+				state.choiceB = payload;
 			}
 		},
 		changeStateGame: (state, { payload }: PayloadAction<string>): void => {
