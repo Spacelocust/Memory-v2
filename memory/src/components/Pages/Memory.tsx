@@ -1,5 +1,9 @@
 import React from 'react';
 
-function Memory() {}
+import Board from '../Molecules/Board';
+
+function Memory() {
+	return <Board />;
+}
 
 export default Memory;
