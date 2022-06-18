@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import Test from './components/Atoms/Test';
+import Memory from './components/Pages/Memory';
 
 import './bemit/index.css';
 
@@ -11,6 +11,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
 	<React.StrictMode>
-		<Test />
+		<Memory />
 	</React.StrictMode>,
 );
