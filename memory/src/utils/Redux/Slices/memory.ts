@@ -10,16 +10,14 @@ interface MemoryState {
 	choiceA: Choice | null;
 	choiceB: Choice | null;
 	keepPair: string[];
-	stateGame: string | null;
-	score: number;
+	timeScore: number | null;
 }
 
 const initialState: MemoryState = {
 	choiceA: null,
 	choiceB: null,
 	keepPair: [],
-	stateGame: null,
-	score: 0,
+	timeScore: null,
 };
 
 export const memorySlice = createSlice({
@@ -33,14 +31,11 @@ export const memorySlice = createSlice({
 				state.choiceB = payload;
 			}
 		},
-		changeStateGame: (state, { payload }: PayloadAction<string>): void => {
-			state.stateGame = payload;
+		setTimeScore: (state, { payload }: PayloadAction<number>): void => {
+			state.timeScore = payload;
 		},
-		increaseScore: (state): void => {
-			state.score += 10;
-			state.choiceA &&
-				state.choiceB &&
-				state.keepPair.push(state.choiceA.name, state.choiceB.name);
+		keepChoices: (state): void => {
+			state.choiceA && state.choiceB && state.keepPair.push(state.choiceA.name, state.choiceB.name);
 			state.choiceA = null;
 			state.choiceB = null;
 		},
@@ -57,12 +52,6 @@ export const memorySlice = createSlice({
 	},
 });
 
-export const {
-	select,
-	increaseScore,
-	clearChoices,
-	clearGame,
-	changeStateGame,
-} = memorySlice.actions;
+export const { select, keepChoices, clearChoices, clearGame, setTimeScore } = memorySlice.actions;
 
 export default memorySlice.reducer;
