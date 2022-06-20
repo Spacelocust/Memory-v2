@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Board from '../Molecules/Board';
+import Board from '../Organisms/Board';
 
 function Memory() {
 	return <Board />;

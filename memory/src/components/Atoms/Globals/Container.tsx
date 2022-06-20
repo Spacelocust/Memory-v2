@@ -1,11 +1,11 @@
 import React from 'react';
 
-type Container = {
-	children: JSX.Element;
+type TContainer = {
+	children: JSX.Element | JSX.Element[];
 	className?: string;
 };
 
-function Container({ children, className }: Container): JSX.Element {
+function Container({ children, className }: TContainer): JSX.Element {
 	return <div className={`container mx-auto ${className}`}>{children}</div>;
 }
 
