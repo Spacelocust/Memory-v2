@@ -8,9 +8,8 @@ type TGrid = {
 };
 
 function Grid({ Cols, Rows, Gap = 4, children }: TGrid): JSX.Element {
-	//className={`grid grid-${Cols ? `cols-${Cols}` : `rows-${Rows}`} gap-${Gap}`}
 	return (
-		<div className="grid grid-cols-4 gap-4" role="grid">
+		<div className={`grid grid-${Cols ? `cols-${Cols}` : `rows-${Rows}`} gap-${Gap}`} role="grid">
 			{children}
 		</div>
 	);

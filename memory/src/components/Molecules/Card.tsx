@@ -9,17 +9,24 @@ import { IsSelected } from '../../utils/Helpers/Hooks';
 import { CARD_IMAGE } from '../../utils/Constants/CardImages';
 
 function Card({ keyGen }: { keyGen: number }): JSX.Element {
-	const keepPair = useAppSelector((state) => state.memory.keepPair);
+	const { keepPair, timeScore } = useAppSelector((state) => state.memory);
 	const dispatch = useAppDispatch();
 
+	// get an image depending on the keyGen value
 	const assignImg = Object.entries(CARD_IMAGE).find((el: [string, number[]]) => el[1].includes(keyGen));
+
 	const img = require(`../../assets/images/${assignImg ? assignImg[0] : ''}.png`);
 
 	const name: string = `card-${keyGen}`;
+
+	// check if the card is already selected
 	const selected: boolean = IsSelected(`card-${keyGen}`);
 
+	// dispatch the action to select the card
 	const handleSelect = () => {
-		!selected && !keepPair.includes(name) && dispatch(select({ name, value: assignImg ? assignImg[0] : '' }));
+		if (!timeScore) {
+			!selected && !keepPair.includes(name) && dispatch(select({ name, value: assignImg ? assignImg[0] : '' }));
+		}
 	};
 
 	return (
