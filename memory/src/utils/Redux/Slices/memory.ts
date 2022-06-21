@@ -24,6 +24,7 @@ export const memorySlice = createSlice({
 	name: 'memory',
 	initialState,
 	reducers: {
+		// save the card selected of the player
 		select: (state, { payload }: PayloadAction<Choice>): void => {
 			if (isNull(state.choiceA)) {
 				state.choiceA = payload;
@@ -31,14 +32,17 @@ export const memorySlice = createSlice({
 				state.choiceB = payload;
 			}
 		},
+		// set TimeScore state
 		setTimeScore: (state, { payload }: PayloadAction<number>): void => {
 			state.timeScore = payload;
 		},
+		// add a new pair to keepPair state
 		keepChoices: (state): void => {
 			state.choiceA && state.choiceB && state.keepPair.push(state.choiceA.name, state.choiceB.name);
 			state.choiceA = null;
 			state.choiceB = null;
 		},
+		// reset selected card state
 		clearChoices: (state): MemoryState => {
 			return {
 				...state,
@@ -46,6 +50,7 @@ export const memorySlice = createSlice({
 				choiceB: null,
 			};
 		},
+		// reset game state
 		clearGame: (state): MemoryState => {
 			return initialState;
 		},

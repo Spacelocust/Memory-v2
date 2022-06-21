@@ -8,12 +8,14 @@ function Result() {
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
+		// save the pair when choiceA and choiceB are the same card
 		if (choiceA && choiceB && choiceA.value === choiceB.value) {
 			const keep = setTimeout(() => {
 				dispatch(keepChoices());
 			}, 500);
 			return () => clearTimeout(keep);
 		} else {
+			// reset player choices
 			if (choiceA && choiceB && choiceA.value !== choiceB.value) {
 				const clear = setTimeout(() => {
 					dispatch(clearChoices());

@@ -13,6 +13,7 @@ function Timer() {
 	const keepPair = useAppSelector((state) => state.memory.keepPair);
 	const dispatch = useAppDispatch();
 
+	// change the color of the progress bar depending on the time left
 	const stateProgress: string = useMemo(() => {
 		switch (true) {
 			case percent <= 50 && percent > 25:
@@ -27,10 +28,12 @@ function Timer() {
 	}, [percent]);
 
 	useEffect(() => {
+		// dispatch the action to set the timeScore when the time reaches 0 or when all pairs are found
 		if (counter === 0 || keepPair.length === 16) {
 			dispatch(setTimeScore(timeDefault - counter));
 			return;
 		}
+		// timer
 		if (counter > 0 || keepPair.length < 16) {
 			const interval = setInterval(() => {
 				setCounter(counter - 1);
