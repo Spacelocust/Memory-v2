@@ -30,6 +30,8 @@ function Card({ keyGen }: { keyGen: number }): JSX.Element {
 				!keepPair.includes(name) ? 'border-indigo-500' : 'border-green-900'
 			} rounded-lg cursor-pointer w-20 h-20`}
 			onClick={() => handleSelect()}
+			data-testid={name}
+			role="card"
 		>
 			<FlipCard flip={selected || keepPair.includes(name)} img={img} />
 		</div>
