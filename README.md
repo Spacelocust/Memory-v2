@@ -5,7 +5,7 @@ Memory game made with React.js, Redux, Typescript, Tailwindcss and Docker
 
 Run these commands in your terminal :
 
-1. Clone project `git clone git@github.com:Spacelocust/memory-v2.git`
+1. Clone project `git clone git@github.com:Spacelocust/Memory-v2.git`
 2. Go in project `cd %PROJECT_PATH%\memory-v2`
 3. Start project `docker compose -f docker-compose.yml up -d --build`
 4. Go to [http://localhost:3000](http://localhost:3000) in your web browser
